@@ -140,12 +140,9 @@ as per_day_orders;
 
 -- Determine the top 3 most ordered pizza types based on revenue.
 
-select * from order_details;
-select * from orders;
-select * from pizza_types;
-select * from pizzas;
 
-select pt.`name`, sum(od.quantity * p.price) 
+
+select pt.`name`, sum(od.quantity * p.price)  as total_revenue
 from pizzas p
 join pizza_types pt 
 on pt.pizza_type_id = p.pizza_type_id
@@ -154,6 +151,9 @@ on od.pizza_id = p.pizza_id
 group by 1
 order by 2 desc limit 3;
 
-
+select * from order_details;
+select * from orders;
+select * from pizza_types;
+select * from pizzas;
 
 
